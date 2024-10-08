@@ -1,0 +1,27 @@
+.App {
+  font-family: Trebuchet, sans-serif;
+  width: 100%;
+  background-color: rgb(240, 255, 246);
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+main {
+  padding: 20px;
+}
+body{
+  display: block;
+  
+}
+
+.heading{
+  color: rgb(36, 63, 38);
+  font-family: 'Luminari',fantasy;
+  
+}
+.quote{
+  color: rgb(27, 24, 43);
+  font-size: x-large;
+  font-family: 'Brush Script MT', cursive;
+}

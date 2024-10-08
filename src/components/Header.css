@@ -1,0 +1,157 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    transition: box-shadow .3s;
+    
+  }
+ 
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.homebtn, .blogsbtn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+
+
+
+
+.blog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+}
+
+  .span{
+    color: black;
+  }
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+  .profile-img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  .title{
+    color: #37523f;
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .nav{
+    padding-left: 500px;
+    font-size: 15px;
+  }
+  .nav a{
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bolder;
+    gap: 10px;
+    background-color: #f2f7ef;
+    border: #000000;
+  }
+  .add-button:hover {
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  }
+  
+  .homebtn:hover {
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    border: none;
+  }
+  .blogsbtn:hover {
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    border: none;
+  }
+  
+  .add-button {
+    background-color: rgb(16, 42, 29);
+    color: white;
+    border: none;
+    font-size: smaller;
+    padding: 15px 35px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    cursor: pointer;
+    
+  }
+ 
+ 
+
+.modal-close-button {
+  width: 24px;  
+  height: 24px; 
+  font-size: 18px; 
+}
+
+.modal-close-button svg {
+  width: 100%;   
+  height: 100%;
+}
+
+.mantine-Modal-root {
+  display: flex !important; 
+  align-items: center;      
+  justify-content: center; 
+  max-width: 90vw; 
+  max-height: 90vh; 
+}
+
+@media (max-width: 600px) {
+  .mantine-Modal-root {
+      width: 100%; 
+      max-width: none; 
+  }
+}
+
+.mantine-Modal-modal {
+  max-width: 500px; 
+  width: 100%;    
+  border-radius: 10px; 
+}
+
+.mantine-Modal-close {
+  width: 24px;  
+  height: 24px; 
+  font-size: 18px; 
+}
+
