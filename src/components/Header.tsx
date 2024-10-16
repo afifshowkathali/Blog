@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -35,6 +35,7 @@ const Header: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loggedInUserName, setLoggedInUserName] = useState("");
 
   const [emailError, setEmailError] = useState("");
   const [emailValError, setEmailValError] = useState("");
@@ -69,10 +70,15 @@ const Header: React.FC = () => {
         alert("Please log in to submit an article.");
         return;
       }
-
+      const userId = pb.authStore.model?.id;
+      if (!userId) {
+        alert("Unable to fetch user ID. Please log in again.");
+        return;
+      }
       const formData = new FormData();
       formData.append("title", title);
       formData.append("description", description);
+      formData.append("user", userId);
 
       if (image) {
         formData.append("image", image);
@@ -81,9 +87,7 @@ const Header: React.FC = () => {
       await pb.collection("articles").create(formData);
       setSuccess(true);
       closeAddArticle();
-      setTitle("");
-      setDescription("");
-      setImage(null);
+      resetAddArticleForm();
     } catch (error) {
       console.error("Error adding article:", error);
     }
@@ -137,6 +141,12 @@ const Header: React.FC = () => {
       }
     }
   };
+  useEffect(() => {
+    const currentUser = pb.authStore.model; // Get the current logged-in user from PocketBase auth store
+    if (currentUser) {
+      setLoggedInUserName(currentUser.name); // Set the logged-in user's name
+    }
+  }, []);
 
   const handleLogin = async () => {
     try {
@@ -210,13 +220,7 @@ const Header: React.FC = () => {
         title="Add New Article"
         overlayProps={{ backgroundOpacity: 0.55, blur: 3 }}
       >
-        <TextInput
-          label="Name"
-          placeholder="Enter your name"
-          value={name}
-          disabled
-          required
-        />
+        <TextInput label="Name" value={loggedInUserName} readOnly required />
 
         <TextInput
           label="Title"
