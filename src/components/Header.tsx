@@ -138,9 +138,9 @@ const Header: React.FC = () => {
     }
   };
   useEffect(() => {
-    const currentUser = pb.authStore.model; // Get the current logged-in user from PocketBase auth store
+    const currentUser = pb.authStore.model;
     if (currentUser) {
-      setLoggedInUserName(currentUser.name); // Set the logged-in user's name
+      setLoggedInUserName(currentUser.name);
     }
   }, []);
 
@@ -167,8 +167,7 @@ const Header: React.FC = () => {
   };
   useEffect(() => {
     if (pb.authStore.isValid) {
-      // User is already logged in, keep the state
-      const currentUser = pb.authStore.model; // Get the current user model from auth store
+      const currentUser = pb.authStore.model;
       if (currentUser) {
         setIsLoggedIn(true);
         setLoggedInUserName(currentUser.name);
