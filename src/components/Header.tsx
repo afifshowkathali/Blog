@@ -126,11 +126,7 @@ const Header: React.FC = () => {
       await pb.collection("users").create(formData);
       alert("User registered successfully");
       closeRegister();
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      setProfilePicture(null);
+      resetRegisterForm();
     } catch (error: any) {
       if (error.response?.data) {
         const errorData = error.response.data;
@@ -155,6 +151,7 @@ const Header: React.FC = () => {
         .authWithPassword(email, password);
       setName(authData.record.name);
       setIsLoggedIn(true);
+      setLoggedInUserName(authData.record.name);
       closeLogin();
     } catch (error) {
       console.error("Error logging in:", error);
@@ -166,7 +163,18 @@ const Header: React.FC = () => {
     pb.authStore.clear();
     setIsLoggedIn(false);
     setName("");
+    setLoggedInUserName("");
   };
+  useEffect(() => {
+    if (pb.authStore.isValid) {
+      // User is already logged in, keep the state
+      const currentUser = pb.authStore.model; // Get the current user model from auth store
+      if (currentUser) {
+        setIsLoggedIn(true);
+        setLoggedInUserName(currentUser.name);
+      }
+    }
+  }, []);
 
   return (
     <>
